@@ -2,63 +2,63 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public.platform
 (
-    PlatformID character varying NOT NULL,
-    Platforn_name character varying,
+    PlatformID VARCHAR(50) NOT NULL,
+    Platforn_name VARCHAR(50),
     PRIMARY KEY (PlatformID)
 );
 
 CREATE TABLE IF NOT EXISTS public.project
 (
-    ProjectID character varying NOT NULL,
-    Project_name character varying,
-    Project_description character varying,
-    Project_ticker character varying,
+    ProjectID VARCHAR(50) NOT NULL,
+    Project_name VARCHAR(50),
+    Project_description VARCHAR(500),
+    Project_ticker VARCHAR(20),
     PRIMARY KEY (ProjectID)
 );
 
 CREATE TABLE IF NOT EXISTS public.token_role
 (
-    Token_roleID character varying NOT NULL,
-    Token_Role character varying,
+    Token_roleID VARCHAR(50) NOT NULL,
+    Token_Role VARCHAR(20),
     PRIMARY KEY (Token_roleID)
 );
 
 CREATE TABLE IF NOT EXISTS public.category
 (
-    CategoryID character varying NOT NULL,
-    Category_name character varying,
+    CategoryID VARCHAR(50) NOT NULL,
+    Category_name VARCHAR(50),
     PRIMARY KEY (CategoryID)
 );
 
 CREATE TABLE IF NOT EXISTS public.icos
 (
-    ID character varying NOT NULL,
-    DateID character varying NOT NULL,
-    ProjectID character varying NOT NULL,
-    PlatformID character varying NOT NULL,
-    CategoryID character varying NOT NULL,
-    Token_roleID character varying NOT NULL,
-    Raised_usd integer,
-    ICO_price double precision,
-    Fundraise_goal double precision,
-    Total_token double precision,
-    Sold double precision,
+    ID VARCHAR(50) NOT NULL,
+    DateID VARCHAR(50) NOT NULL,
+    ProjectID VARCHAR(50) NOT NULL,
+    PlatformID VARCHAR(50) NOT NULL,
+    CategoryID VARCHAR(50) NOT NULL,
+    Token_roleID VARCHAR(50) NOT NULL,
+    Raised_usd INT,
+    ICO_price FLOAT,
+    Fundraise_goal FLOAT,
+    Total_token FLOAT,
+    Sold FLOAT,
     PRIMARY KEY (ID)
 );
 
 CREATE TABLE IF NOT EXISTS public.date
 (
-    DateID character varying NOT NULL,
+    DateID VARCHAR(50) NOT NULL,
     Start_date date,
-    Start_year integer,
-    Start_month integer,
-    Start_weekday integer,
-    Start_day integer,
+    Start_year INT,
+    Start_month INT,
+    Start_weekday INT,
+    Start_day INT,
     End_date date,
-    End_year integer,
-    End_month integer,
-    End_weekday integer,
-    End_day integer,
+    End_year INT,
+    End_month INT,
+    End_weekday INT,
+    End_day INT,
     PRIMARY KEY (DateID)
 );
 
