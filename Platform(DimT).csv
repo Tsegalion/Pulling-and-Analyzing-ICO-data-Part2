@@ -3,29 +3,30 @@ PLAT0,Polkadot
 PLAT1,Binance Chain
 PLAT2,Ethereum
 PLAT3,Solana
-PLAT4,Own blockchain
+PLAT4,Own Blockchain
 PLAT5,NEAR Blockchain
 PLAT6,Tezos
-PLAT7,Polygon
-PLAT8,Kusama
-PLAT9,Flow
-PLAT10,IoTeX Network
-PLAT11,HECO
-PLAT12,Elrond Network
-PLAT13,Algorand
-PLAT14,Cosmos Network
-PLAT15,NEO Blockchain
-PLAT16,ICON
-PLAT17,NEM Blockchain
-PLAT18,Nostr Protocol
-PLAT19,WaykiChain
-PLAT20,EOS
-PLAT21,Tron
-PLAT22,Ontology
-PLAT23,Harmony Blockchain
-PLAT24,Stellar
-PLAT25,IOST Blockchain
-PLAT26,WanChain
-PLAT27,Fusion Chain
-PLAT28,RioChain
-PLAT29,RSK Blockchain
+PLAT7,Flow/Solana/BSC
+PLAT8,Polygon
+PLAT9,Kusama
+PLAT10,Flow Network
+PLAT11,IoTeX Network
+PLAT12,Heco Chain
+PLAT13,Elrond Network
+PLAT14,Algorand
+PLAT15,Cosmos Network
+PLAT16,NEO Blockchain
+PLAT17,ICON
+PLAT18,NEM Blockchain
+PLAT19,Nebulas Chain
+PLAT20,WaykiChain
+PLAT21,EOS
+PLAT22,TRON
+PLAT23,Ontology Blockchain
+PLAT24,Harmony Blockchain
+PLAT25,Stellar
+PLAT26,Iost Blockchain
+PLAT27,Wanchain
+PLAT28,Fusion Chain
+PLAT29,Realio Network
+PLAT30,RSK Blockchain

@@ -1,21 +1,24 @@
 CategoryID,Category
-CAT0,DeFi
+CAT0,Protocol
 CAT1,Blockchain Service
 CAT2,Platform
-CAT3,Gaming
-CAT4,AI/VR
-CAT5,Exchange
-CAT6,Marketplace
-CAT7,Dapp
-CAT8,Marketing Service
-CAT9,Data Service
-CAT10,Business
-CAT11,Social Network
-CAT12,Education
-CAT13,Energy
-CAT14,Healthcare
-CAT15,KYC/Security
-CAT16,Real Estate
-CAT17,Cloud
-CAT18,IOT
-CAT19,Travel
+CAT3,DeFi
+CAT4,Gaming
+CAT5,AI/VR
+CAT6,Exchange
+CAT7,Network
+CAT8,Trading Platform
+CAT9,Marketplace
+CAT10,Data Service
+CAT11,Business
+CAT12,Social Network
+CAT13,Education
+CAT14,Energy
+CAT15,Healthcare
+CAT16,KYC/Security
+CAT17,Marketing Service
+CAT18,Real Estate
+CAT19,Cloud
+CAT20,E-commerce
+CAT21,IOT
+CAT22,Travel

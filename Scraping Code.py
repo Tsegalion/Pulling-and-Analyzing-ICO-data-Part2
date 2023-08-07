@@ -56,9 +56,9 @@ class IcospiderSpider(scrapy.Spider):
             for ico in icolists:
                 try:
                     date = ico.css('div.col-12.title-h4 i.fa.fa-calendar + h4::text').get().strip()
-                    ICO_period = date.split(':')[1].strip()
+                    Start_date = date.split(':')[1].strip()
                 except (AttributeError, IndexError):
-                    ICO_period = 'N/A'
+                    Start_date = 'N/A'
 
                 try:
                     D = response.css('span.ico-category-name::text').get().strip()
@@ -83,9 +83,9 @@ class IcospiderSpider(scrapy.Spider):
                     Description = 'N/A'
                 
                 try:
-                    Token_sale_end = ico.css('div.sale-date::text').get().strip()
+                    End_date = ico.css('div.sale-date::text').get().strip()
                 except (AttributeError, IndexError):
-                    Token_sale_end = 'N/A'
+                    End_date = 'N/A'
                     
                 try:    
                     Raised_usd = ico.css('div.blue.money-goal::text').get().strip()
@@ -128,8 +128,8 @@ class IcospiderSpider(scrapy.Spider):
                     'Project' : Project if Project else 'N/A',
                     'Category' : Category if Category else 'N/A',
                     'Description' : Description if Description else 'N/A',
-                    'ICO_period': ICO_period if ICO_period else 'N/A',
-                    'Token_sale_end' : Token_sale_end if Token_sale_end else 'N/A',
+                    'Start_date': Start_date if Start_date else 'N/A',
+                    'End_date' : End_date if End_date else 'N/A',
                     'Raised_usd' : Raised_usd if Raised_usd else 'N/A',
                     'Ticker' : Ticker if Ticker else 'N/A',
                     'Platform' : Platform if Platform else 'N/A',
