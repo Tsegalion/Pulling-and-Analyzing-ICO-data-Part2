@@ -12,3 +12,9 @@ Transformed the data using pandas by creating different tables following the ear
 
 # Fifth Step
 Saved each table on the postgre database where intend to query the data for analysis
+
+# Short term Goal of this Project
+To gether insights to guide a future ICO event for a startup.
+
+# Long term Goal of this Project
+To automate this process or workflow
