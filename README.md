@@ -11,7 +11,7 @@ Using the Kimball's model, I modelled and created a database on Postgresql which
 Transformed the data using pandas by creating different tables following the earlier model of the database design. @Python model code
 
 # Fifth Step
-Saved each table on the postgre database where intend to query the data for analysis
+Saved each table on the postgre database where I intend to perform some query on the data for analysis
 
 # Short term Goal of this Project
 To gether insights to guide a future ICO event for a startup.
