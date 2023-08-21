@@ -1,5 +1,5 @@
 # First Step
-First stage of this project was the using scrapy and selenium to scrap ended ICO data from icodrops; an ICO website. I saved the scraped data into a CSV file.
+First stage of this project #Scraping code was using scrapy and selenium to scrap ended ICO data from icodrops; an ICO website. I saved the scraped data into a CSV file.
 
 # Second Step
 Imported the file using Pandas to do saome basic cleaning of the data to make it meaningful.
