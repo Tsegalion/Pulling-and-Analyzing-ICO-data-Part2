@@ -1,5 +1,5 @@
 # First Step
-First stage of this was using scrapy and selenium to scrap ended ICO data from icodrops; an ICO website. I saved the scraped data into a CSV file. @Scraping Code
+First stage of this project was to source for the data as this was the major issue. Using scrapy and selenium to scrap ended ICO data from icodrops; an ICO website. I saved the scraped data into a CSV file. @Scraping Code
 
 # Second Step
 Imported the file using Pandas to perform basic data cleaning to make the data meaningful and easier to read. @Data Cleaning Code
@@ -17,4 +17,4 @@ Saved each table on the postgre database where intend to query the data for anal
 To gether insights to guide a future ICO event for a startup.
 
 # Long term Goal of this Project
-To automate this process or workflow
+To add extra sources of ICO data and automate this process.
