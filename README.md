@@ -1,8 +1,8 @@
 # First Step
-First stage of this project #Scraping code was using scrapy and selenium to scrap ended ICO data from icodrops; an ICO website. I saved the scraped data into a CSV file.
+First stage of this project #Scraping Code# was using scrapy and selenium to scrap ended ICO data from icodrops; an ICO website. I saved the scraped data into a CSV file.
 
 # Second Step
-Imported the file using Pandas to do saome basic cleaning of the data to make it meaningful.
+Imported the file using Pandas to perform basic #data cleaning# to make the data easier to read and meaningful.
 
 # Third Step
 Using the Kimball's model, I modelled and created a database on Postgresql which was my database for this project
