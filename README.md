@@ -5,7 +5,7 @@ First stage of this project was to source for the data as this was the major iss
 Imported the file using Pandas to perform basic data cleaning to make the data meaningful and easier to read. @Data Cleaning Code
 
 # Third Step
-Using the Kimball's model, I modelled and created a database on Postgresql which was my database for this project. @ERD image and @Sql table code
+Using the Kimball's model, I modelled and created a database on Postgresql which was my database for this project. @data model image and @Sql table code
 
 # Fourth Step
 Transformed the data using pandas by creating different tables following the earlier model of the database design. @Python model code
