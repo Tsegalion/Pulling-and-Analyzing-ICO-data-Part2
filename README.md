@@ -9,7 +9,7 @@ Also, using the Kimball's model, I modelled and created a database on Postgre wh
 Transformed the data using pandas by creating different tables following the earlier model of the database design (@Python model code) after which I saved each table on postgre db where I intend to perform some queries on the data for analysis (@SQL Analysis)
 
 # Third Step (Analysis)
-I also decided to try communicating with PostgreSQL using the SQLAlchemy API to directly query the database and show the results of my analysis (@data extraction queries).
+I also tried communicating with PostgreSQL using the SQLAlchemy API to directly query the database and show the results of my analysis (@data extraction queries).
 
 # Short term Goal of this Project
 To gether insights to guide a future ICO event for a startup.
