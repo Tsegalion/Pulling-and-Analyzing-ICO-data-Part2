@@ -12,7 +12,7 @@ Transformed the data using pandas by creating different tables following the ear
 I also tried communicating with PostgreSQL using the SQLAlchemy API to directly query the database and show the results of my analysis (@data extraction queries).
 
 # Short term Goal of this Project
-To gether insights to guide a future ICO event for a startup.
+To gather insights that could guide a future ICO event for a startup.
 
 # Long term Goal of this Project
 To add extra sources of ICO data and automate this process.
