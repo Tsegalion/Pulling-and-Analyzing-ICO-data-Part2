@@ -13,6 +13,9 @@ Transformed the data using pandas by creating different tables following the ear
 # Fifth Step
 Saved each table on the postgre database where I intend to perform some query on the data for analysis @SQL Analysis
 
+# Fifth Step
+Also, I decided to try communicating with PostgreSQL using the SQLAlchemy API to directly query the database and show the results of my analysis @data extraction queries.
+
 # Short term Goal of this Project
 To gether insights to guide a future ICO event for a startup.
 
