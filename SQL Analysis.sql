@@ -110,6 +110,7 @@ WHERE
 
 -- Create a temp table of ICO projects who raised above 10 million dollars
 -- Create a temporary table containing ICOs meeting specific criteria
+
 CREATE TEMP TABLE BigICOs AS
 SELECT 
     project.project_name,
