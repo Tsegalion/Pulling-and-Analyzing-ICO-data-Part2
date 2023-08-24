@@ -7,31 +7,31 @@ FROM icos
 -- Here it was 1122
 UPDATE icos
 SET sold = 11.22
-WHERE projectid = 'PRO179'
+WHERE project_id = 'PRO179'
 
 UPDATE icos
 SET sold = 31.25
-WHERE projectid = 'PRO787'
+WHERE project_id = 'PRO787'
 
 UPDATE icos
 SET sold = 20.73
-WHERE projectid = 'PRO78'
+WHERE project_id = 'PRO78'
 
 
 -- DATA ANALYSIS
 
 -- The top 10 ICO categories that raised the highest?
 SELECT
-    category.category_name,
+    category.category,
     SUM(raised_usd) AS Total_raised
 FROM
     icos
 JOIN
-    category ON icos.categoryid = category.categoryid
+    category ON icos.category_id = category.category_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
-    category.category_name
+    category.category
 ORDER BY
     Total_raised DESC
 LIMIT 10;
@@ -40,20 +40,19 @@ LIMIT 10;
 
 -- The top 10 ICO platforms that raised the highest?
 SELECT
-    platform.platforn_name,
+    platform.platform,
     SUM(raised_usd) AS Total_raised
 FROM
     icos
 JOIN
-    platform ON icos.platformid = platform.platformid
+    platform ON icos.platform_id = platform.platform_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
-    platform.platforn_name
+    platform.platform
 ORDER BY
     Total_raised DESC
 LIMIT 10;
-
 
 
 -- Token roles that raised the highest?
@@ -63,7 +62,7 @@ SELECT
 FROM
     icos
 JOIN
-    token_role ON icos.token_roleid = token_role.token_roleid
+    token_role ON icos.token_role_id = token_role.token_role_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
@@ -80,12 +79,12 @@ SELECT
         WHEN date.start_month BETWEEN 7 AND 9 THEN 'Q3'
         WHEN date.start_month BETWEEN 10 AND 12 THEN 'Q4'
     END AS Start_quarter,
-    COUNT(projectid) AS Total_projects,
+    COUNT(project_id) AS Total_projects,
     SUM(raised_usd) AS Total_raised
 FROM
     icos
 JOIN
-    date ON icos.dateid = date.dateid
+    date ON icos.date_id = date.date_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
@@ -110,14 +109,13 @@ WHERE
 
 -- Create a temp table of ICO projects who raised above 10 million dollars
 -- Create a temporary table containing ICOs meeting specific criteria
-
 CREATE TEMP TABLE BigICOs AS
 SELECT 
-    project.project_name,
+    project.project,
     date.start_date,
     date.end_date,
-    category.category_name,
-    platform.platforn_name,
+    category.category,
+    platform.platform,
     total_token,
     ico_price,
     fundraise_goal,
@@ -126,13 +124,13 @@ SELECT
 FROM
     icos
 JOIN
-    project ON icos.projectid = project.projectid
+    project ON icos.project_id = project.project_id
 JOIN
-    platform ON icos.platformid = platform.platformid
+    platform ON icos.platform_id = platform.platform_id
 JOIN
-    category ON icos.categoryid = category.categoryid
+    category ON icos.category_id = category.category_id
 JOIN
-    date ON icos.dateid = date.dateid
+    date ON icos.date_id = date.date_id
 WHERE
     raised_usd >= 10000000
     AND ico_price IS NOT NULL
@@ -187,10 +185,6 @@ FROM (
 ) AS T1
 GROUP BY 1
 ORDER BY 2 DESC;  -- Major projects ICO price was not enormous for such large sale. Usually between "$0.01 -  $1.00"
-
-
-
-
 
 
 

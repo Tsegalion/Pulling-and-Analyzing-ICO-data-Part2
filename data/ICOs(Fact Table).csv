@@ -1,4 +1,4 @@
-ICO_ID,DateID,ProjectID,PlatformID,CategoryID,Token_roleID,Raised_usd,ICO_price,Fundraise_goal,Total_token,Sold
+ico_id,date_id,project_id,platform_id,category_id,token_role_id,raised_usd,ico_price,fundraise_goal,total_token,sold
 ICO0,DA0,PRO0,PLAT0,CAT0,TR0,6600000.0,,,1000000000.0,15.6
 ICO1,DA39,PRO46,PLAT0,CAT0,TR0,240000.0,0.25,240000.0,,
 ICO2,DA309,PRO367,PLAT0,CAT0,TR0,6600000.0,0.36,28800000.0,1000000000.0,
