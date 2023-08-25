@@ -4,7 +4,7 @@ First stage of this project was to source for the data as this was the major iss
 # Transformation(Data Cleaning & Modelling)
 I imported the file using Pandas to perform basic data cleaning to making sure the data is meaningful and easy to read. Also, using the Kimball's model db design , I transformed the data using pandas to create different dimensional and fact tables (@data model image)
 
-# Load
+# Load to a DB
 I designed the database on PostgreSQL according to the model, and then loaded the data into the database where I intend to perform some queries for analysis. (@SQL Analysis)
 
 # Analysis
