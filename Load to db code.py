@@ -3,7 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Connect to postgres DB
-engine = create_engine("postgresql+psycopg2://Tsega:Ebunoluwa24@localhost:5432/DataProjects")
+engine = create_engine("postgresql+psycopg2://Tsega:*******@localhost:5432/DataProjects")
 
 
 # Read each CSV file into a pandas DataFrame
