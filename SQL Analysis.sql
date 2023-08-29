@@ -5,17 +5,26 @@ FROM icos
 
 -- sold column should be between 0%-100% but there were numbers greater than 100%
 -- Here it was 1122
-UPDATE icos
-SET sold = 11.22
-WHERE project_id = 'PRO179'
+UPDATE
+    icos
+SET
+    sold = 11.22
+WHERE
+    project_id = 'PRO179'
 
-UPDATE icos
-SET sold = 31.25
-WHERE project_id = 'PRO787'
+UPDATE
+    icos
+SET
+    sold = 31.25
+WHERE
+    project_id = 'PRO787'
 
-UPDATE icos
-SET sold = 20.73
-WHERE project_id = 'PRO78'
+UPDATE
+    icos
+SET
+    sold = 20.73
+WHERE
+    project_id = 'PRO78'
 
 
 -- DATA ANALYSIS
@@ -26,15 +35,15 @@ SELECT
     SUM(raised_usd) AS Total_raised
 FROM
     icos
-JOIN
-    category ON icos.category_id = category.category_id
+    JOIN category ON icos.category_id = category.category_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
     category.category
 ORDER BY
     Total_raised DESC
-LIMIT 10;
+LIMIT
+    10;
 
 
 
@@ -44,15 +53,15 @@ SELECT
     SUM(raised_usd) AS Total_raised
 FROM
     icos
-JOIN
-    platform ON icos.platform_id = platform.platform_id
+    JOIN platform ON icos.platform_id = platform.platform_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
     platform.platform
 ORDER BY
     Total_raised DESC
-LIMIT 10;
+LIMIT
+    10;
 
 
 -- Token roles that raised the highest?
@@ -61,8 +70,7 @@ SELECT
     SUM(raised_usd) AS Total_raised
 FROM
     icos
-JOIN
-    token_role ON icos.token_role_id = token_role.token_role_id
+    JOIN token_role ON icos.token_role_id = token_role.token_role_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
@@ -72,8 +80,8 @@ ORDER BY
 
 
 -- The start quarter that raised the highest?
-SELECT 
-    CASE 
+SELECT
+    CASE
         WHEN date.start_month BETWEEN 1 AND 3 THEN 'Q1'
         WHEN date.start_month BETWEEN 4 AND 6 THEN 'Q2'
         WHEN date.start_month BETWEEN 7 AND 9 THEN 'Q3'
@@ -83,8 +91,7 @@ SELECT
     SUM(raised_usd) AS Total_raised
 FROM
     icos
-JOIN
-    date ON icos.date_id = date.date_id
+    JOIN date ON icos.date_id = date.date_id
 WHERE
     raised_usd IS NOT NULL
 GROUP BY
@@ -110,7 +117,7 @@ WHERE
 -- Create a temp table of ICO projects who raised above 10 million dollars
 -- Create a temporary table containing ICOs meeting specific criteria
 CREATE TEMP TABLE BigICOs AS
-SELECT 
+SELECT
     project.project,
     date.start_date,
     date.end_date,
@@ -123,14 +130,10 @@ SELECT
     sold
 FROM
     icos
-JOIN
-    project ON icos.project_id = project.project_id
-JOIN
-    platform ON icos.platform_id = platform.platform_id
-JOIN
-    category ON icos.category_id = category.category_id
-JOIN
-    date ON icos.date_id = date.date_id
+    JOIN project ON icos.project_id = project.project_id
+    JOIN platform ON icos.platform_id = platform.platform_id
+    JOIN category ON icos.category_id = category.category_id
+    JOIN date ON icos.date_id = date.date_id
 WHERE
     raised_usd >= 10000000
     AND ico_price IS NOT NULL
@@ -146,19 +149,23 @@ FROM BigICOs;
 SELECT
     sold_range,
     COUNT(sold_range) AS Total
-FROM (
-    SELECT *,
-        CASE 
-            WHEN sold < 10 THEN 'Less than 10%'
-            WHEN sold BETWEEN 10 AND 25 THEN '10% - 25%'
-            WHEN sold BETWEEN 25 AND 50 THEN '25% - 50%'
-            WHEN sold BETWEEN 50 AND 75 THEN '50% - 75%'
-            WHEN sold BETWEEN 75 AND 100 THEN '75% - 100%'
-        END AS Sold_range
-    FROM BigICOs
-) AS T1
-GROUP BY 1
-ORDER BY 2 DESC; -- Major projects sold between 0.25% - 25% of their total supply
+FROM
+    (
+        SELECT *,
+            CASE
+                WHEN sold < 10 THEN 'Less than 10%'
+                WHEN sold BETWEEN 10 AND 25 THEN '10% - 25%'
+                WHEN sold BETWEEN 25 AND 50 THEN '25% - 50%'
+                WHEN sold BETWEEN 50 AND 75 THEN '50% - 75%'
+                WHEN sold BETWEEN 75 AND 100 THEN '75% - 100%'
+            END AS sold_range
+        FROM
+            BigICOs
+    ) AS ico_range_table
+GROUP BY
+    sold_range
+ORDER BY
+    Total DESC; -- Major projects sold between 0.25% - 25% of their total supply
 
 
 -- Was the amount raised was based of the token price during the ICO
@@ -166,32 +173,30 @@ ORDER BY 2 DESC; -- Major projects sold between 0.25% - 25% of their total suppl
 SELECT
     Price_range,
     COUNT(Price_range) AS Total
-FROM (
-    SELECT *,
-        CASE 
-            WHEN ico_price < 0.01 THEN 'Less than $0.01'
-            WHEN ico_price BETWEEN 0.01 AND 1.00 THEN '$0.01 -  $1.00'
-            WHEN ico_price BETWEEN 1.00 AND 5.00 THEN '$1.00 -  $5.00'
-            WHEN ico_price BETWEEN 5.00 AND 20.00 THEN '$5.00 -  $20.00'
-            WHEN ico_price BETWEEN 20.00 AND 50.00 THEN '$20.00 -  $50.00'
-            WHEN ico_price BETWEEN 50.00 AND 100.00 THEN '$50.00 -  $100.00'
-            WHEN ico_price BETWEEN 100.00 AND 250.00 THEN '$100.00 -  $250.00'
-            WHEN ico_price BETWEEN 250.00 AND 500.00 THEN '$250.00 -  $500.00'
-            WHEN ico_price BETWEEN 500.00 AND 750.00 THEN '$500.00 -  $750.00'
-            WHEN ico_price BETWEEN 750.00 AND 1000.00 THEN '$750.00 -  $1000.00'
-            WHEN ico_price > 1000.00 THEN 'Above $1k'
-        END AS Price_range
-    FROM BigICOs
-) AS T1
-GROUP BY 1
-ORDER BY 2 DESC;  -- Major projects ICO price was not enormous for such large sale. Usually between "$0.01 -  $1.00"
-
-
-
-
-
-
-
+FROM
+    (
+        SELECT
+            *,
+            CASE
+                WHEN ico_price < 0.01 THEN 'Less than $0.01'
+                WHEN ico_price BETWEEN 0.01 AND 1.00 THEN '$0.01 -  $1.00'
+                WHEN ico_price BETWEEN 1.00 AND 5.00 THEN '$1.00 -  $5.00'
+                WHEN ico_price BETWEEN 5.00 AND 20.00 THEN '$5.00 -  $20.00'
+                WHEN ico_price BETWEEN 20.00 AND 50.00 THEN '$20.00 -  $50.00'
+                WHEN ico_price BETWEEN 50.00 AND 100.00 THEN '$50.00 -  $100.00'
+                WHEN ico_price BETWEEN 100.00 AND 250.00 THEN '$100.00 -  $250.00'
+                WHEN ico_price BETWEEN 250.00 AND 500.00 THEN '$250.00 -  $500.00'
+                WHEN ico_price BETWEEN 500.00 AND 750.00 THEN '$500.00 -  $750.00'
+                WHEN ico_price BETWEEN 750.00 AND 1000.00 THEN '$750.00 -  $1000.00'
+                WHEN ico_price > 1000.00 THEN 'Above $1k'
+            END AS Price_range
+        FROM
+            BigICOs
+    ) AS T1
+GROUP BY
+    Price_range
+ORDER BY
+    Total DESC;  -- Major projects ICO price was not enormous for such large sale. Usually between "$0.01 -  $1.00"
 
 
 

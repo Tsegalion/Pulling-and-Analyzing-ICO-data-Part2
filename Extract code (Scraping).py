@@ -5,12 +5,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 # Set up the Selenium WebDriver
-driver = webdriver.Chrome(r"C:\Users\Tsega\Downloads\chromedriver_win32\chromedriver.exe")  # You can change the WebDriver based on your browser choice
+driver = webdriver.Chrome(r"C:\Users\Tsega\Downloads\chromedriver-win64\chromedriver.exe") # You can change the WebDriver based on your browser choice
 driver.get("https://icodrops.com/category/ended-ico/")
 
 links = []
 last_height = driver.execute_script("return document.body.scrollHeight")
-ico_count = 1400
+ico_count = 1600
 
 while ico_count > len(links):
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -25,7 +25,6 @@ while ico_count > len(links):
     last_height = new_height
 
     elements = driver.find_elements(By.CSS_SELECTOR, '#ended-icos-container > div')
-    links = []
 
     for element in elements:
         link = element.find_element(By.TAG_NAME, 'a')
@@ -36,7 +35,6 @@ while ico_count > len(links):
 
 class IcospiderSpider(scrapy.Spider):
     name = 'icospider'
-    allowed_domains = ['icodrops.com']
     start_urls = ['http://icodrops.com/category/ended-ico/']
 
 
@@ -56,9 +54,9 @@ class IcospiderSpider(scrapy.Spider):
             for ico in icolists:
                 try:
                     date = ico.css('div.col-12.title-h4 i.fa.fa-calendar + h4::text').get().strip()
-                    Start_date = date.split(':')[1].strip()
+                    ICO_period = date.split(':')[1].strip()
                 except (AttributeError, IndexError):
-                    Start_date = 'N/A'
+                    ICO_period = 'N/A'
 
                 try:
                     D = response.css('span.ico-category-name::text').get().strip()
@@ -83,9 +81,9 @@ class IcospiderSpider(scrapy.Spider):
                     Description = 'N/A'
                 
                 try:
-                    End_date = ico.css('div.sale-date::text').get().strip()
+                    Token_sale_end = ico.css('div.sale-date::text').get().strip()
                 except (AttributeError, IndexError):
-                    End_date = 'N/A'
+                    Token_sale_end = 'N/A'
                     
                 try:    
                     Raised_usd = ico.css('div.blue.money-goal::text').get().strip()
@@ -125,19 +123,19 @@ class IcospiderSpider(scrapy.Spider):
 
 
                 yield {
-                    'Project' : Project if Project else 'N/A',
-                    'Category' : Category if Category else 'N/A',
-                    'Description' : Description if Description else 'N/A',
-                    'Start_date': Start_date if Start_date else 'N/A',
-                    'End_date' : End_date if End_date else 'N/A',
-                    'Raised_usd' : Raised_usd if Raised_usd else 'N/A',
-                    'Ticker' : Ticker if Ticker else 'N/A',
-                    'Platform' : Platform if Platform else 'N/A',
-                    'ICO_price' : ICO_price  if ICO_price else 'N/A',
-                    'Fundraise_goal' : Fundraise_goal if Fundraise_goal else 'N/A',
-                    'Total_token' : Total_token if Total_token else 'N/A',
-                    'Sold_%' : Sold if Sold else 'N/A',
-                    'Token_Role' : Token_Role if Token_Role else 'N/A',
+                    'project' : Project if Project else 'N/A',
+                    'category' : Category if Category else 'N/A',
+                    'description' : Description if Description else 'N/A',
+                    'start_date': ICO_period if ICO_period else 'N/A',
+                    'end_date' : Token_sale_end if Token_sale_end else 'N/A',
+                    'raised_usd' : Raised_usd if Raised_usd else 'N/A',
+                    'ticker' : Ticker if Ticker else 'N/A',
+                    'platform' : Platform if Platform else 'N/A',
+                    'ico_price' : ICO_price  if ICO_price else 'N/A',
+                    'fundraise_goal' : Fundraise_goal if Fundraise_goal else 'N/A',
+                    'total_token' : Total_token if Total_token else 'N/A',
+                    'sold_%' : Sold if Sold else 'N/A',
+                    'token_role' : Token_Role if Token_Role else 'N/A',
 
                 }
         except Exception as error:
