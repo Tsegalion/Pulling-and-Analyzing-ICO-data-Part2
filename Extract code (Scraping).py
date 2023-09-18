@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 # Set up the Selenium WebDriver
-driver = webdriver.Chrome(r"C:\Users\Tsega\Downloads\chromedriver-win64\chromedriver.exe") # You can change the WebDriver based on your browser choice
+driver = webdriver.Chrome(r"C:\Users\Tsega\Downloads\chromedriver-win64\chromedriver.exe")
 driver.get("https://icodrops.com/category/ended-ico/")
 
 links = []
@@ -32,7 +32,6 @@ while ico_count > len(links):
         links.append(href)
 
 # Now unto Scrapy
-
 class IcospiderSpider(scrapy.Spider):
     name = 'icospider'
     start_urls = ['http://icodrops.com/category/ended-ico/']
